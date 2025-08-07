@@ -1,0 +1,65 @@
+@Trak.Application_HostAddress = https://localhost:7055
+@Trak.Customer = BigCo7
+### PlayController Endpoints ###
+
+# Get all plays
+GET {{Trak.Application_HostAddress}}/api/v1/play
+Accept: application/json
+
+###
+
+# Get a play by name
+GET {{Trak.Application_HostAddress}}/api/v1/play/Hamlet
+Accept: application/json
+
+###
+
+# Create a new play
+POST {{Trak.Application_HostAddress}}/api/v1/play
+Content-Type: application/json
+
+{
+  "name": "As You Like It",
+  "type": 0,
+  "lines": 1000
+}
+
+### InvoiceController Endpoints ###
+
+# Create a new invoice
+POST {{Trak.Application_HostAddress}}/api/v1/invoice
+Content-Type: application/json
+
+{
+  "customer": "{{Trak.Customer}}"
+}
+
+###
+
+# Get an invoice by customer
+GET {{Trak.Application_HostAddress}}/api/v1/invoice?customer={{Trak.Customer}}
+Accept: application/json
+
+###
+
+# Add a performance to an existing invoice
+PATCH {{Trak.Application_HostAddress}}/api/v1/invoice
+Content-Type: application/json
+
+{
+  "customer": "{{Trak.Customer}}",
+  "performance": {
+    "playName": "As You Like It",
+    "audience": 36
+  }
+}
+
+###
+
+# Summarize an invoice
+POST {{Trak.Application_HostAddress}}/api/v1/invoice/summarize
+Content-Type: application/json
+
+{
+  "customer": "{{Trak.Customer}}"
+}
