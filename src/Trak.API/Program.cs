@@ -50,7 +50,7 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 // Configure services
-builder.Services.AddInfrastructureServices(microsoftLogger);
+builder.Services.AddInfrastructureServices(microsoftLogger, builder.Configuration);
 builder.Services.AddUseCasesServices(microsoftLogger);
 
 // Isso aqui nao deveria ta aqui, mas esta, fé
