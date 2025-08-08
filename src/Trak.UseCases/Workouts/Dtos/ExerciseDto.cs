@@ -7,15 +7,10 @@ using System.Threading.Tasks;
 namespace Trak.UseCases.Workouts.Dtos
 {
     public record class ExerciseDto(
-        Guid Id,
-        Guid WorkoutId,
-        string Name,
-        string Description,
-        int Sets,
-        int Repetitions,
-        double Weight,
-        TimeSpan Duration,
-        DateTime CreatedAt,
-        DateTime PerformedAt
-    );
+            Guid Id,
+            string Name,
+            int Repetitions,
+            double Weight,
+            DateTime PerformedAt
+        );
 }

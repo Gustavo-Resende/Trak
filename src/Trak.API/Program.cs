@@ -4,6 +4,7 @@ using Serilog;
 using Serilog.Extensions.Logging;
 using Trak.API.Middleware;
 using Trak.Infrastructure;
+using Trak.Infrastructure.Data.PostgreSQL;
 using Trak.Infrastructure.Data.SQLServer;
 
 var logger = Log.Logger = new LoggerConfiguration()
@@ -81,7 +82,7 @@ public class AppDbInitializerService(IServiceProvider _serviceProvider) : IHoste
     {
         using (var scope = _serviceProvider.CreateScope())
         {
-            var dbContext = scope.ServiceProvider.GetRequiredService<SqlDbContext>();
+            var dbContext = scope.ServiceProvider.GetRequiredService<PgSqlDbContext>();
             dbContext.InitializeDatabase();
         }
     }
