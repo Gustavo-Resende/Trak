@@ -6,11 +6,18 @@ using System.Threading.Tasks;
 
 namespace Trak.UseCases.Workouts.Dtos
 {
-    public record class ExerciseDto(
-            Guid Id,
-            string Name,
-            int Repetitions,
-            double Weight,
-            DateTime PerformedAt
-        );
+    public record ExerciseDto
+    {
+        public Guid Id { get; private init; }
+        public string Name { get; private init; }
+        public DateTime PerformedAt { get; private init; }
+        public string MuscleGroup { get; private init; }
+        public ExerciseDto(Guid id, string name, DateTime performedAt, string muscleGroup)
+        {
+            Id = id;
+            Name = name;
+            PerformedAt = performedAt;
+            MuscleGroup = muscleGroup;
+        }
+    }
 }

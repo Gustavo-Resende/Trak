@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Trak.Core.InvoiceAggregate;
 using Trak.Core.PlayAggregate;
+using Trak.Core.UserAggregate;
 using Trak.Core.WorkoutAggregate;
 using Valhalla.Lib.SharedKernel;
 
@@ -17,6 +18,7 @@ namespace Trak.Infrastructure.Data.PostgreSQL
         public DbSet<Play> Play => Set<Play>();
         public DbSet<Invoice> Invoice => Set<Invoice>();
         public DbSet<Workout> Workouts => Set<Workout>();
+        public DbSet<User> User => Set<User>();
         public DbSet<Exercise> Exercises => Set<Exercise>();
 
         public void InitializeDatabase()

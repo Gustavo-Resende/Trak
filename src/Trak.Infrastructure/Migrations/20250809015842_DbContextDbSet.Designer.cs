@@ -12,8 +12,8 @@ using Trak.Infrastructure.Data.PostgreSQL;
 namespace Trak.Infrastructure.Migrations
 {
     [DbContext(typeof(PgSqlDbContext))]
-    [Migration("20250808005122_NomeDescritivoDaAlteracao")]
-    partial class NomeDescritivoDaAlteracao
+    [Migration("20250809015842_DbContextDbSet")]
+    partial class DbContextDbSet
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -103,31 +103,39 @@ namespace Trak.Infrastructure.Migrations
                     b.ToTable("Play", (string)null);
                 });
 
+            modelBuilder.Entity("Trak.Core.UserAggregate.User", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("User");
+                });
+
             modelBuilder.Entity("Trak.Core.WorkoutAggregate.Exercise", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<string>("MuscleGroup")
+                        .HasColumnType("text");
+
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateTime>("PerformedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("Repetitions")
-                        .HasColumnType("integer");
-
-                    b.Property<decimal>("Weight")
-                        .HasColumnType("numeric");
-
-                    b.Property<Guid?>("WorkoutId")
-                        .HasColumnType("uuid");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("WorkoutId");
 
                     b.ToTable("Exercises");
                 });
@@ -140,10 +148,6 @@ namespace Trak.Infrastructure.Migrations
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid");
@@ -162,21 +166,9 @@ namespace Trak.Infrastructure.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Trak.Core.WorkoutAggregate.Exercise", b =>
-                {
-                    b.HasOne("Trak.Core.WorkoutAggregate.Workout", null)
-                        .WithMany("Exercises")
-                        .HasForeignKey("WorkoutId");
-                });
-
             modelBuilder.Entity("Trak.Core.InvoiceAggregate.Invoice", b =>
                 {
                     b.Navigation("Performances");
-                });
-
-            modelBuilder.Entity("Trak.Core.WorkoutAggregate.Workout", b =>
-                {
-                    b.Navigation("Exercises");
                 });
 #pragma warning restore 612, 618
         }

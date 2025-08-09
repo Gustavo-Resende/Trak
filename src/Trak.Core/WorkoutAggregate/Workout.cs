@@ -9,42 +9,56 @@ namespace Trak.Core.WorkoutAggregate
 {
     public class Workout : IAggregateRoot
     {
-        public Guid Id { get; set; }
-        public Guid UserId { get; set; }
-        public DateTime Date { get; set; }
-        public string Name { get; set; }
-        public ICollection<Exercise> Exercises { get; set; }
+        public Guid Id { get; private set; }
+        public Guid UserId { get; private set; }
+        public DateTime Date { get; private set; }
 
-        public Workout(Guid userId, DateTime date, string name)
+        public Workout(Guid userId, DateTime date)
         {
             Id = Guid.NewGuid();
             UserId = userId;
             Date = date;
-            Name = name;
-            Exercises = new List<Exercise>();
         }
 
         private Workout() { }
     }
 
-    public class Exercise
+    public class Exercise : IAggregateRoot
     {
         public Guid Id { get; private set; }
-        public string Name { get; private set; }
-        public double Weight { get; private set; }
-        public int Repetitions { get; private set; }
+        public string? Name { get; private set; }
         public DateTime PerformedAt { get; private set; }
+        public string? MuscleGroup { get; private set; }
 
-        public Exercise(string name, double weight, int repetitions, DateTime performedAt)
+        public Exercise(string name, DateTime performedAt, string musclegroup)
         {
             Id = Guid.NewGuid();
             Name = name;
-            Weight = weight;
-            Repetitions = repetitions;
             PerformedAt = performedAt;
+            MuscleGroup = musclegroup;
         }
 
         // Para uso do EF Core
         public Exercise() { }
+    }
+
+    public class PerformedExercise
+    {
+        public Guid Id { get; private set; }
+        public Guid WorkoutId { get; private set; }
+        public Guid ExerciseId { get; private set; }
+        public double WeightKg { get; private set; }
+        public int Repetitions { get; private set; }
+        
+        public PerformedExercise(Guid workoutId, Guid exerciseId, int repetitions, double weight)
+        {
+            Id = Guid.NewGuid();
+            WorkoutId = workoutId;
+            ExerciseId = exerciseId;
+            WeightKg = weight;
+            Repetitions = repetitions;
+        }
+        // Para uso do EF Core
+        public PerformedExercise() { }
     }
 }

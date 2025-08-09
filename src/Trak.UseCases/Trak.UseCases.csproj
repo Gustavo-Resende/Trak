@@ -9,4 +9,7 @@
     <ProjectReference Include="..\Trak.Core\Trak.Core.csproj" />
     <ProjectReference Include="..\Trak.Infrastructure\Trak.Infrastructure.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Users\" />
+  </ItemGroup>
 </Project>

@@ -7,7 +7,11 @@ using Trak.UseCases.Workouts.Dtos;
 using Valhalla.Lib.Result;
 using Valhalla.Lib.SharedKernel;
 
-namespace Trak.UseCases.Workouts.Queries
+namespace Trak.UseCases.Workouts.Command.CreateExercise
 {
-    public record GetAllWorkoutQuery : IQuery<Result<List<WorkoutDto>>>;
+    public record CreateExerciseCommand(
+        string Name,
+        DateTime PerformedAt,
+        string MuscleGroup
+    ) : ICommand<Result<ExerciseDto>>;
 }
