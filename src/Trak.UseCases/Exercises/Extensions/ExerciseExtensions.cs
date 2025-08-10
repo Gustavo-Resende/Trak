@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Trak.Core.PlayAggregate;
-using Trak.Core.WorkoutAggregate;
-using Trak.UseCases.Plays.Dtos;
-using Trak.UseCases.Workouts.Dtos;
+﻿using Trak.Core.WorkoutAggregate;
+using Trak.UseCases.Exercises.Dtos;
 
-namespace Trak.UseCases.Workouts.Extensions
+namespace Trak.UseCases.Exercises.Extensions
 {
     public static class ExerciseExtensions
-    { 
-         public static ExerciseDto ParseDto(this Exercise exercise)
+    {
+        public static ExerciseDto ParseDto(this Exercise exercise)
         {
             return new ExerciseDto(
                 exercise.Id,

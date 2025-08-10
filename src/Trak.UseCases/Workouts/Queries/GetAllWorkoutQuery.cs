@@ -4,5 +4,5 @@ using Valhalla.Lib.SharedKernel;
 
 namespace Trak.UseCases.Workouts.Queries
 {
-    public record GetAllExerciseQuery : IQuery<Result<List<ExerciseDto>>>;
+    public record GetAllWorkoutQuery : IQuery<Result<List<WorkoutDto>>>;
 }

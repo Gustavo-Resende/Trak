@@ -1,10 +1,10 @@
 ﻿using Trak.Core.WorkoutAggregate;
-using Trak.UseCases.Workouts.Dtos;
-using Trak.UseCases.Workouts.Extensions;
+using Trak.UseCases.Exercises.Dtos;
+using Trak.UseCases.Exercises.Extensions;
 using Valhalla.Lib.Result;
 using Valhalla.Lib.SharedKernel;
 
-namespace Trak.UseCases.Workouts.Queries
+namespace Trak.UseCases.Exercises.Queries
 {
     public class GetAllExerciseHandler : IQueryHandler<GetAllExerciseQuery, Result<List<ExerciseDto>>>
     {

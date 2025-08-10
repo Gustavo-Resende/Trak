@@ -1,10 +1,10 @@
 ﻿using Trak.Core.WorkoutAggregate;
-using Trak.UseCases.Workouts.Dtos;
-using Trak.UseCases.Workouts.Extensions;
+using Trak.UseCases.Exercises.Dtos;
+using Trak.UseCases.Exercises.Extensions;
 using Valhalla.Lib.Result;
 using Valhalla.Lib.SharedKernel;
 
-namespace Trak.UseCases.Workouts.Command.CreateExercise
+namespace Trak.UseCases.Exercises.Command.CreateExercise
 {
     public class CreateExerciseHandler : ICommandHandler<CreateExerciseCommand, Result<ExerciseDto>>
     {
