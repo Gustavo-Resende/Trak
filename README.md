@@ -1,7 +1,3 @@
-Claro, Gustavo! Como o repositório [Trak](https://github.com/Gustavo-Resende/Trak) ainda não tem uma descrição oficial, vou criar um modelo de README que você pode adaptar conforme os objetivos do projeto. Baseado nos arquivos presentes (como `Trak.sln`, `.dockerignore`, e o uso de C# e Docker), parece ser um projeto .NET com suporte para contêineres. Aqui vai uma sugestão:
-
----
-
 # 🛰️ Trak
 
 **Trak** é um projeto desenvolvido em C# com foco em modularidade e escalabilidade, ideal para aplicações que exigem rastreamento, monitoramento ou controle de dados em tempo real. Este repositório está em fase inicial e aberto para contribuições.
